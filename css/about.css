@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+/* General Body */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("../img/bg.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  width: 1280px;
+  height: auto;
+	margin : 0 ;
+	padding : 0;
+  overflow-y: scroll; /* Prevent scrolling beyond canvas */
+}
+.space-grotesk-uniquifier {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+/* About Title */
+
+.about-header {
+	text-align: center;
+  padding-top: 20px;
+	padding-left: 240px;
+}
+.about-header h1 {
+font-family:"Space Grotesk", sans-serif ;  /* use your handwritten font */
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+}
+
+/* About Content Rows */
+.about-content {
+  width: 1200px; /* Fit inside 1280px canvas */
+  margin-left: 100px;
+	padding: 50px;
+	background-color: #333;
+	border-radius: 20px;
+	height: 1000px;
+}
+.about-content {
+  min-height: 100vh; /* allow dynamic growth */
+  height: auto; /* or remove height entirely */
+}
+.work, .biography {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  margin: 10px 0;
+}
+
+.biography {
+  flex-direction: row-reverse; /* Flip image and text */
+	padding-bottom: 0px;
+	padding-left: 80px;
+	padding-top: 50px;
+}
+
+.work img, .biography img {
+  width: 400px;
+height: 400px;/* Smaller image */
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.work {
+  flex-direction: row; /* Ensures image left, text right */
+}
+
+
+.text {
+  flex: 1;
+  text-align: left;
+}
+
+.text h2 {
+  font-size: 40px;
+}
+
+.text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.about-content > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("../img/bg.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  width: 1280px;
+  min-height: 100vh;
+	 box-sizing: border-box;
+	margin : 0 ;
+	padding : 0;
+  overflow-y: auto; /* Prevent scrolling beyond canvas */
+}
+
+space-grotesk-uniquifier {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+/* ===== Gallery Grid Layout ===== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 300px); /* 4 fixed columns */
+  grid-gap:50px; /* Space between items */ 
+justify-content: center;/* Center grid horizontally */
+  margin-top: 80px;
+	padding-left: 180px;
+}
+
+.gallery-grid {
+  grid-auto-rows: 300px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ===== Gallery Item Box ===== */
+.gallery-item {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Image Fill & Crop */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills & crops */
+  display: block;
+}
+.gallery-item figure {
+  width: 100%;
+  height: 100%;
+	position: relative;
+}
+
+.gallery-grid {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.gallery-item:last-child {
+  margin-bottom: 0;
+}
+/* ===== Shine Effect ===== */
+.gallery-item figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.gallery-item figure::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 9;
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  transform: skewX(-25deg);
+}
+
+.gallery-item:hover figure::before {
+  animation: shine 0.75s;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+/* ===== Overlay Text ===== */
+figure {
+  width: 100%;
+  height: 100%;
+	position: relative;
+}
+
+.overlay-text {
+  position: absolute;
+ top: 50%;
+transform: translateY(-50%);
+padding: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 60px 0; /* replace auto with actual value */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+	margin: 0; /* Remove accidental margin */
+  font-size: 18px; /* Adjust as needed */
+  line-height: 10; /* Optional for multi-line text */
+
+}
+
+.gallery-item:hover .overlay-text {
+  opacity: 1;
+}
+.gallery-item {
+  will-change: filter;
+}
+
+
+/* ===== Blur & Dim Other Images ===== */
+.gallery-grid:hover .gallery-item {
+  filter: blur(1.5px) brightness(75%);
+  transition: filter 0.2s ease, transform 0.3s ease;
+}
+.gallery-grid .gallery-item:hover {
+  filter: none; /* Keep hovered item clear */
+  z-index: 1;   /* Bring it above blurred items */
+  transform: scale(1.05); /* Optional: zoom slightly */
+}
+
+/* ===== Rise In Animation ===== */
+@keyframes riseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Initial hidden state */
+.gallery-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When visible, animate in */
+.gallery-item.show {
+  animation: riseIn 0.5s ease-out forwards;
+}
+
+#spacer {
+	height: 100px;
+	
+}
